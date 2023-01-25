@@ -128,7 +128,7 @@ def lcd_string(message, line):
     message = message.ljust(LCD_WIDTH, " ")
     lcd_byte(line, LCD_CMD)
     for i in range(LCD_WIDTH):
-    lcd_byte(ord(message[i]), LCD_CHR)
+        lcd_byte(ord(message[i]), LCD_CHR)
 
 
 if __name__ == '__main__':
@@ -136,9 +136,9 @@ if __name__ == '__main__':
         main()
     except KeyboardInterrupt:
         pass
-    # finally:
-    # lcd_byte(0x01, LCD_CMD)
-    # lcd_string("Goodbye!",LCD_LINE_1)
+    finally:
+        lcd_byte(0x01, LCD_CMD)
+        lcd_string("Goodbye!",LCD_LINE_1)
     GPIO.cleanup()
     # Initialise display
     lcd_init()
